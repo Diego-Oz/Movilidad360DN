@@ -11,7 +11,7 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-image: url(img/mapa4.png);
+    background-image: url(img/mapa.gif);
     background-size: cover;
     background-color: #f8f8f8; 
     display: flex;
@@ -19,8 +19,7 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-size: contain;
-    background-position: right;
+    background-position-x: 90vh;
     background-repeat: no-repeat;
 }
 
@@ -170,6 +169,12 @@ body {
   transform: translateY(-300%);
 }
 
+.error {
+  background:rgb(250, 210, 210) !important;
+}
+.success {
+  background:rgb(211, 248, 211) !important;
+}
 
 
 /*RESPONSIVE FORM*/
@@ -206,4 +211,3 @@ body {
     border-top-right-radius: 0;
   }
 }
-

@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="style2.css">  <!--css de la barra de opciones-->
 
     <title>Movilidad360DN</title>
+    <link rel="icon" href="../../assets/img/icon.ico" type="image/x-icon"/>
     <script
       src="https://kit.fontawesome.com/7e5b2d153f.js"
       crossorigin="anonymous"
@@ -22,7 +23,7 @@
 <body>
 
     <!--barra de opciones-->
-    <header class="header">
+    <!-- <header class="header">
         <div class="logo">
           <img src="img/logo_login.jpg" alt="Logo de la pagina">
          </div>
@@ -47,16 +48,21 @@
             </li>
           </ul>
         </nav>
-      </header>
+      </header> -->
       <main>
        
       </main>
      <!--barra de opciones-->
 
      <!--el login-->
-    <div class="container-form register">
+    <div class="container-form register" style="margin-bottom: 90px;">
         <div class="information">
             <div class="info-childs">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" width="180" height="50">
+                    <text x="0" y="35" font-family="Times New Roman" font-size="22" font-weight="bold">
+                    <tspan fill="black">Movilidad360DN</tspan>
+                    </text>
+                    </svg>
                 <h2>Bienvenido/a</h2>
                 <p>¿Tienes cuenta? Ingresa a Movilidad360DN 　　　　　　　　　　　　　　　　　</p>
                 <input type="button" value="Iniciar Sesión" id="sign-in">
@@ -99,13 +105,14 @@
     </div>
 
 
-
-
-
-
-    <div class="container-form login hide">
+    <div class="container-form login hide" style="margin-bottom: 90px;">
         <div class="information">
             <div class="info-childs">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" width="180" height="50">
+                    <text x="0" y="35" font-family="Times New Roman" font-size="22" font-weight="bold">
+                    <tspan fill="black">Movilidad360DN</tspan>
+                    </text>
+                    </svg>
                 <h2>Bienvenido/a </h2>
                 <p>¿No tienes una cuenta en Movilidad360 DN? 　　　　　　　　　　　　　　　　　</p>
                 <input type="button" value="Registrarse" id="sign-up">
@@ -127,15 +134,14 @@
                     </a>
                 </div>
                 <p>o Iniciar Sesión con una cuenta</p>
-                <form class="form">
-
-                    <label >
-                        <i class='bx bx-envelope' ></i>
-                        <input type="email" placeholder="Correo Electronico">
+                <form class="form" onsubmit="return validarInicioSesion()">
+                    <label id="email-label">
+                        <i class='bx bx-envelope'></i>
+                        <input type="email" id="email" placeholder="Correo Electrónico">
                     </label>
-                    <label>
-                        <i class='bx bx-lock-alt' ></i>
-                        <input type="password" placeholder="Contraseña">
+                    <label id="password-label">
+                        <i class='bx bx-lock-alt'></i>
+                        <input type="password" id="password" placeholder="Contraseña">
                     </label>
                     <input type="submit" value="Iniciar Sesión">
                 </form>
