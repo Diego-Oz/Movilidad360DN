@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<title>Atlantis Lite - Bootstrap 4 Admin Dashboard</title>
+	<title>MOVILIDAD360DN</title>
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
-	<link rel="icon" href="../../assets/img/icon.ico" type="image/x-icon"/>
-	
+	<link rel="icon" href="../../assets/img/icon.ico" type="image/x-icon" />
+
 	<!-- Fonts and icons -->
 	<script src="../../assets/js/plugin/webfont/webfont.min.js"></script>
 	<script>
 		WebFont.load({
-			google: {"families":["Lato:300,400,700,900"]},
-			custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['../../assets/css/fonts.min.css']},
-			active: function() {
+			google: { "families": ["Lato:300,400,700,900"] },
+			custom: { "families": ["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['../../assets/css/fonts.min.css'] },
+			active: function () {
 				sessionStorage.fonts = true;
 			}
 		});
@@ -23,17 +24,181 @@
 	<link rel="stylesheet" href="../../assets/css/atlantis.min.css">
 	<!-- CSS Just for demo purpose, don't include it in your project -->
 	<link rel="stylesheet" href="../../assets/css/demo.css">
+	<link href='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css' rel='stylesheet' />
+	<style>
+		#map {
+			height: 500px;
+		}
+
+		/* Estilos para el formulario */
+		#transport-form {
+			background-color: #ffffff;
+			padding: 20px;
+			border-radius: 10px;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+		}
+
+		#transport-form label {
+			font-weight: bold;
+			font-size: 12px !important;
+		}
+
+		#transport-type,
+		#origin,
+		#destination,
+		#time {
+			width: 100%;
+			padding: 2px;
+			margin-bottom: 4px;
+			border: 1px solid #ced4da;
+			border-radius: 5px;
+			font-size: 14px;
+		}
+
+		#transport-type:focus,
+		#origin:focus,
+		#destination:focus,
+		#time:focus {
+			outline: none;
+			border-color: #007bff;
+			box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+		}
+
+		button[type="submit"] {
+			background-color: #28a745;
+			color: white;
+			border: none;
+			padding: 5px 10px;
+			border-radius: 10px;
+			cursor: pointer;
+			transition: background-color 0.3s ease;
+			margin-top: 5px;
+		}
+
+		button[type="submit"]:hover {
+			background-color: #218838;
+		}
+
+		/* Estilos para la tarjeta */
+		.card {
+			background-color: #ffffff;
+			padding: 20px;
+			border-radius: 5px;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+			margin-top: 10px;
+		}
+
+		.card h3 {
+			color: #007bff;
+			font-size: 18px;
+			margin-bottom: 10px;
+		}
+
+		.card p {
+			font-size: 14px;
+			margin-bottom: 5px;
+		}
+
+		#small {
+			position: absolute;
+			top: 10px;
+			left: 10px;
+			z-index: 1;
+		}
+
+		.row {
+			min-height: 100vh;
+		}
+
+		.card {
+			background-color: #fff;
+			width: 300px;
+			border: none;
+			border-radius: 16px;
+		}
+
+		.info {
+			line-height: 19px;
+		}
+
+		.name {
+			color: #4c40e0;
+			font-size: 18px;
+			font-weight: 600;
+		}
+
+		.order {
+			font-size: 14px;
+			font-weight: 400;
+			color: #b7b5b5;
+		}
+
+		.detail {
+			line-height: 19px;
+		}
+
+		.summery {
+			color: #d2cfcf;
+			font-weight: 400;
+			font-size: 13px;
+		}
+
+		.text {
+			line-height: 15px;
+		}
+
+		.new {
+			color: #000;
+			font-size: 14px;
+			font-weight: 600;
+		}
+
+		.money {
+			font-size: 14px;
+			font-weight: 500;
+		}
+
+		.address {
+			color: #d2cfcf;
+			font-weight: 500;
+			font-size: 14px;
+		}
+
+		.last {
+
+			font-size: 10px;
+			font-weight: 500;
+		}
+
+		.address-line {
+			color: #4C40E0;
+			font-size: 11px;
+			font-weight: 700;
+		}
+
+		.mapboxgl-ctrl-bottom-left {
+			display: none;
+		}
+
+		.mapboxgl-ctrl-bottom-right {
+			display: block;
+		}
+	</style>
+
 </head>
+
 <body>
 	<div class="wrapper">
 		<div class="main-header">
 			<!-- Logo Header -->
-			<div class="logo-header" data-background-color="blue">
-				
-				<a href="../index.html" class="logo">
-					<img src="../../assets/img/logo.svg" alt="navbar brand" class="navbar-brand">
+			<div class="logo-header" data-background-color="white">
+
+				<a href="index.html" class="logo">
+					<img src="../assets/img/mov360dn.svg" alt="navbar brand" class="navbar-brand">
 				</a>
-				<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
+				<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse"
+					data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon">
 						<i class="icon-menu"></i>
 					</span>
@@ -48,10 +213,11 @@
 			<!-- End Logo Header -->
 
 			<!-- Navbar Header -->
-			<nav class="navbar navbar-header navbar-expand-lg" data-background-color="blue2">
-				
+			<nav class="navbar navbar-header navbar-expand-lg navbar-light">
+
 				<div class="container-fluid">
 					<div class="collapse" id="search-nav">
+						<!-- Filtro de busqueda -->
 						<form class="navbar-left navbar-form nav-search mr-md-3">
 							<div class="input-group">
 								<div class="input-group-prepend">
@@ -64,220 +230,7 @@
 						</form>
 					</div>
 					<ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
-						<li class="nav-item toggle-nav-search hidden-caret">
-							<a class="nav-link" data-toggle="collapse" href="#search-nav" role="button" aria-expanded="false" aria-controls="search-nav">
-								<i class="fa fa-search"></i>
-							</a>
-						</li>
-						<li class="nav-item dropdown hidden-caret">
-							<a class="nav-link dropdown-toggle" href="#" id="messageDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<i class="fa fa-envelope"></i>
-							</a>
-							<ul class="dropdown-menu messages-notif-box animated fadeIn" aria-labelledby="messageDropdown">
-								<li>
-									<div class="dropdown-title d-flex justify-content-between align-items-center">
-										Messages 									
-										<a href="#" class="small">Mark all as read</a>
-									</div>
-								</li>
-								<li>
-									<div class="message-notif-scroll scrollbar-outer">
-										<div class="notif-center">
-											<a href="#">
-												<div class="notif-img"> 
-													<img src="../../assets/img/jm_denis.jpg" alt="Img Profile">
-												</div>
-												<div class="notif-content">
-													<span class="subject">Jimmy Denis</span>
-													<span class="block">
-														How are you ?
-													</span>
-													<span class="time">5 minutes ago</span> 
-												</div>
-											</a>
-											<a href="#">
-												<div class="notif-img"> 
-													<img src="../../assets/img/chadengle.jpg" alt="Img Profile">
-												</div>
-												<div class="notif-content">
-													<span class="subject">Chad</span>
-													<span class="block">
-														Ok, Thanks !
-													</span>
-													<span class="time">12 minutes ago</span> 
-												</div>
-											</a>
-											<a href="#">
-												<div class="notif-img"> 
-													<img src="../../assets/img/mlane.jpg" alt="Img Profile">
-												</div>
-												<div class="notif-content">
-													<span class="subject">Jhon Doe</span>
-													<span class="block">
-														Ready for the meeting today...
-													</span>
-													<span class="time">12 minutes ago</span> 
-												</div>
-											</a>
-											<a href="#">
-												<div class="notif-img"> 
-													<img src="../../assets/img/talha.jpg" alt="Img Profile">
-												</div>
-												<div class="notif-content">
-													<span class="subject">Talha</span>
-													<span class="block">
-														Hi, Apa Kabar ?
-													</span>
-													<span class="time">17 minutes ago</span> 
-												</div>
-											</a>
-										</div>
-									</div>
-								</li>
-								<li>
-									<a class="see-all" href="javascript:void(0);">See all messages<i class="fa fa-angle-right"></i> </a>
-								</li>
-							</ul>
-						</li>
-						<li class="nav-item dropdown hidden-caret">
-							<a class="nav-link dropdown-toggle" href="#" id="notifDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<i class="fa fa-bell"></i>
-								<span class="notification">4</span>
-							</a>
-							<ul class="dropdown-menu notif-box animated fadeIn" aria-labelledby="notifDropdown">
-								<li>
-									<div class="dropdown-title">You have 4 new notification</div>
-								</li>
-								<li>
-									<div class="notif-center">
-										<a href="#">
-											<div class="notif-icon notif-primary"> <i class="fa fa-user-plus"></i> </div>
-											<div class="notif-content">
-												<span class="block">
-													New user registered
-												</span>
-												<span class="time">5 minutes ago</span> 
-											</div>
-										</a>
-										<a href="#">
-											<div class="notif-icon notif-success"> <i class="fa fa-comment"></i> </div>
-											<div class="notif-content">
-												<span class="block">
-													Rahmad commented on Admin
-												</span>
-												<span class="time">12 minutes ago</span> 
-											</div>
-										</a>
-										<a href="#">
-											<div class="notif-img"> 
-												<img src="../../assets/img/profile2.jpg" alt="Img Profile">
-											</div>
-											<div class="notif-content">
-												<span class="block">
-													Reza send messages to you
-												</span>
-												<span class="time">12 minutes ago</span> 
-											</div>
-										</a>
-										<a href="#">
-											<div class="notif-icon notif-danger"> <i class="fa fa-heart"></i> </div>
-											<div class="notif-content">
-												<span class="block">
-													Farrah liked Admin
-												</span>
-												<span class="time">17 minutes ago</span> 
-											</div>
-										</a>
-									</div>
-								</li>
-								<li>
-									<a class="see-all" href="javascript:void(0);">See all notifications<i class="fa fa-angle-right"></i> </a>
-								</li>
-							</ul>
-						</li>
-						<li class="nav-item dropdown hidden-caret">
-							<a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
-								<i class="fas fa-layer-group"></i>
-							</a>
-							<div class="dropdown-menu quick-actions quick-actions-info animated fadeIn">
-								<div class="quick-actions-header">
-									<span class="title mb-1">Quick Actions</span>
-									<span class="subtitle op-8">Shortcuts</span>
-								</div>
-								<div class="quick-actions-scroll scrollbar-outer">
-									<div class="quick-actions-items">
-										<div class="row m-0">
-											<a class="col-6 col-md-4 p-0" href="#">
-												<div class="quick-actions-item">
-													<i class="flaticon-file-1"></i>
-													<span class="text">Generated Report</span>
-												</div>
-											</a>
-											<a class="col-6 col-md-4 p-0" href="#">
-												<div class="quick-actions-item">
-													<i class="flaticon-database"></i>
-													<span class="text">Create New Database</span>
-												</div>
-											</a>
-											<a class="col-6 col-md-4 p-0" href="#">
-												<div class="quick-actions-item">
-													<i class="flaticon-pen"></i>
-													<span class="text">Create New Post</span>
-												</div>
-											</a>
-											<a class="col-6 col-md-4 p-0" href="#">
-												<div class="quick-actions-item">
-													<i class="flaticon-interface-1"></i>
-													<span class="text">Create New Task</span>
-												</div>
-											</a>
-											<a class="col-6 col-md-4 p-0" href="#">
-												<div class="quick-actions-item">
-													<i class="flaticon-list"></i>
-													<span class="text">Completed Tasks</span>
-												</div>
-											</a>
-											<a class="col-6 col-md-4 p-0" href="#">
-												<div class="quick-actions-item">
-													<i class="flaticon-file"></i>
-													<span class="text">Create New Invoice</span>
-												</div>
-											</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</li>
-						<li class="nav-item dropdown hidden-caret">
-							<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
-								<div class="avatar-sm">
-									<img src="../../assets/img/profile.jpg" alt="..." class="avatar-img rounded-circle">
-								</div>
-							</a>
-							<ul class="dropdown-menu dropdown-user animated fadeIn">
-								<div class="dropdown-user-scroll scrollbar-outer">
-									<li>
-										<div class="user-box">
-											<div class="avatar-lg"><img src="../../assets/img/profile.jpg" alt="image profile" class="avatar-img rounded"></div>
-											<div class="u-text">
-												<h4>Hizrian</h4>
-												<p class="text-muted">hello@example.com</p><a href="profile.html" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
-											</div>
-										</div>
-									</li>
-									<li>
-										<div class="dropdown-divider"></div>
-										<a class="dropdown-item" href="#">My Profile</a>
-										<a class="dropdown-item" href="#">My Balance</a>
-										<a class="dropdown-item" href="#">Inbox</a>
-										<div class="dropdown-divider"></div>
-										<a class="dropdown-item" href="#">Account Setting</a>
-										<div class="dropdown-divider"></div>
-										<a class="dropdown-item" href="#">Logout</a>
-									</li>
-								</div>
-							</ul>
-						</li>
+
 					</ul>
 				</div>
 			</nav>
@@ -285,67 +238,110 @@
 		</div>
 		<!-- Sidebar -->
 		<div class="sidebar sidebar-style-2">
-			
 			<div class="sidebar-wrapper scrollbar scrollbar-inner">
 				<div class="sidebar-content">
-					
 					<ul class="nav nav-primary">
-						<li class="nav-item">
-							<a data-toggle="collapse" href="#dashboard" class="collapsed" aria-expanded="false">
+						<li class="nav-section">
+							<span class="sidebar-mini-icon"><i class="fa fa-ellipsis-h"></i></span>
+							<h4 class="text-section">Menú</h4>
+						</li>
+						<li class="nav-item active">
+							<a href="#dashboard">
 								<i class="fas fa-home"></i>
 								<p>Dashboard</p>
-								<!-- <span class="caret"></span> -->
 							</a>
 						</li>
-						
-						<li class="nav-item active submenu">
-							<a data-toggle="collapse" href="#maps">
-								<i class="fas fa-map-marker-alt"></i>
-								<p>Maps</p>
-								<span class="caret"></span>
+						<li class="nav-item">
+							<a href="#reportes">
+								<i class="fas fa-clipboard-list"></i>
+								<p>Reportes</p>
 							</a>
-							<div class="collapse show" id="maps">
-								<ul class="nav nav-collapse">
-									<li>
-										<a href="../maps/googlemaps.html">
-											<span class="sub-item">Google Maps</span>
-										</a>
-									</li>
-									<li>
-										<a href="../maps/fullscreenmaps.html">
-											<span class="sub-item">Full Screen Maps</span>
-										</a>
-									</li>
-									<li class="active">
-										<a href="../maps/jqvmap.html">
-											<span class="sub-item">JQVMap</span>
-										</a>
-									</li>
-								</ul>
-							</div>
 						</li>
-					
+						<li class="nav-item">
+							<a href="#recargas">
+								<i class="fas fa-wallet"></i>
+								<p>Recargas</p>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="#comentarios">
+								<i class="fa-regular fa-comment"></i>
+								<p>Comentarios</p>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="#Rutas">
+								<i class="fa-solid fa-route"></i>
+								<p>Rutas</p>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="#trafico">
+								<i class="fa-solid fa-traffic-light"></i>
+								<p>Tráfico</p>
+							</a>
+						</li>
 					</ul>
+		
+			<!-- Sección inferior del sidebar -->
+				<ul class="nav nav-primary">
+					<li class="nav-section">
+					  <h4 class="text-section">PREFERENCIAS</h4>
+					</li>
+						<li class="nav-item">
+						<a href="#perfil">
+							<i class="fas fa-user"></i>
+							<p>Perfil</p>
+						</a>
+						</li>
+						<li class="nav-item">
+						<a href="#configuracion">
+						<i class="fas fa-cog"></i>
+							<p>Configuración</p>
+						</a>
+						</li>
+					  </ul>
 				</div>
 			</div>
 		</div>
+
 		<div class="main-panel">
 			<div class="content">
 				<div class="row">
 					<div class="col-md-12">
-						<div class="card card-transparent">
-							<div class="card-header">
-								<h4 class="card-title text-center">
-									Vector Maps
-								</h4>
-								<p class="card-category text-center">
-									Looks great on any resolution. Made by our friends from <a href="https://www.10bestdesign.com/jqvmap/">jQuery Vector Maps</a>.
-								</p>
-							</div>
+						<div class="card-transparent">
+							<!-- Mapa -->
 							<div class="card-body">
-								<div class="col-md-10 ml-auto mr-auto">
-									<div class="mapcontainer">
-										<div id="map-example" class="vmap" style="height: 400px"></div>
+								<div class="row">
+									<!-- <div class="col-md-3">
+										
+									</div> -->
+
+									<div class="col-3" id="small">
+										<form id="transport-form">
+											<label for="transport-type">Elige tu ruta</label>
+											<select id="transport-type">
+												<option value="Metro">Metro</option>
+												<option value="Auto">Auto</option>
+												<option value="OMSA">OMSA</option>
+											</select>
+											<label for="origin">Origen:</label>
+											<select id="origin"></select>
+											<label for="destination">Destino:</label>
+											<select id="destination"></select>
+											<label for="time">Hora:</label>
+											<input type="time" id="time">
+											<button type="submit">Guardar</button>
+										</form>
+										<div id="card" class="mt-6 d-flex justify-content-center"></div>
+
+									</div>
+
+									<!-- Contenedor del mapa -->
+									<div class="col-12" style="min-height: 100vh;">
+										<div class="mapcontainer" style="height: 400px;">
+											<div id="map"></div>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -353,11 +349,11 @@
 					</div>
 				</div>
 			</div>
-			<footer class="footer">
+			<!-- <footer class="footer">
 			
-			</footer>
+			</footer> -->
 		</div>
-		
+
 		<!-- Custom template | don't include it in your project! -->
 		<div class="custom-template">
 			<div class="title">Settings</div>
@@ -374,7 +370,7 @@
 							<button type="button" class="changeLogoHeaderColor" data-color="orange"></button>
 							<button type="button" class="changeLogoHeaderColor" data-color="red"></button>
 							<button type="button" class="changeLogoHeaderColor" data-color="white"></button>
-							<br/>
+							<br />
 							<button type="button" class="changeLogoHeaderColor" data-color="dark2"></button>
 							<button type="button" class="changeLogoHeaderColor" data-color="blue2"></button>
 							<button type="button" class="changeLogoHeaderColor" data-color="purple2"></button>
@@ -395,7 +391,7 @@
 							<button type="button" class="changeTopBarColor" data-color="orange"></button>
 							<button type="button" class="changeTopBarColor" data-color="red"></button>
 							<button type="button" class="changeTopBarColor" data-color="white"></button>
-							<br/>
+							<br />
 							<button type="button" class="changeTopBarColor" data-color="dark2"></button>
 							<button type="button" class="selected changeTopBarColor" data-color="blue2"></button>
 							<button type="button" class="changeTopBarColor" data-color="purple2"></button>
@@ -437,7 +433,7 @@
 	<!-- jQuery UI -->
 	<script src="../../assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
 	<script src="../../assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
-	
+
 	<!-- jQuery Vector Maps -->
 	<script src="../../assets/js/plugin/jqvmap/jquery.vmap.min.js"></script>
 	<script src="../../assets/js/plugin/jqvmap/maps/jquery.vmap.world.js"></script>
@@ -447,30 +443,137 @@
 	<script src="../../assets/js/atlantis.min.js"></script>
 	<!-- Atlantis DEMO methods, don't include it in your project! -->
 	<script src="../../assets/js/setting-demo2.js"></script>
+
+	<script src='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js'></script>
+	<script src="script.js"></script>
+	<!-- Map Script -->
 	<script>
-		$('#map-example').vectorMap(
-		{
-			map: 'world_en',
-			backgroundColor: 'transparent',
-			borderColor: '#fff',
-			borderWidth: 2,
-			color: '#e4e4e4',
-			enableZoom: true,
-			hoverColor: '#35cd3a',
-			hoverOpacity: null,
-			normalizeFunction: 'linear',
-			scaleColors: ['#b6d6ff', '#005ace'],
-			selectedColor: '#35cd3a',
-			selectedRegions: ['ID', 'RU', 'US', 'AU'],
-			showTooltip: true,
-			onRegionClick: function(element, code, region)
-			{
-				return false;
-			},
-			onResize: function (element, width, height) {
-				console.log('Map Size: ' +  width + 'x' +  height);
-			},
+		// Inicializar el mapa con Mapbox
+		mapboxgl.accessToken = 'pk.eyJ1Ijoic2ViYXNwYXNzIiwiYSI6ImNsdWRpZXBubTBqN2kya29mcnJzdXp6NnoifQ.FrV615YCOyLkq_SnU-1hPQ';
+
+		var map = new mapboxgl.Map({
+			container: 'map',
+			style: 'mapbox://styles/mapbox/streets-v11',
+			center: [-69.8731, 18.4855],
+			zoom: 12
 		});
+
+		// Agregar marcador personalizado
+		var marker = new mapboxgl.Marker()
+			.setLngLat([-69.8630, 18.5101])
+			.addTo(map);
+
+		var marker2 = new mapboxgl.Marker()
+			.setLngLat([-69.8990, 18.4928])
+			.addTo(map);
+
+		// Permitir hacer zoom y alejar
+		map.addControl(new mapboxgl.NavigationControl());
+	</script>
+
+	<!-- Form Script -->
+	<script>
+		document.getElementById('transport-form').addEventListener('submit', function (event) {
+			event.preventDefault();
+
+			const transportType = document.getElementById('transport-type').value;
+			const origin = document.getElementById('origin').value;
+			const destination = document.getElementById('destination').value;
+			const time = document.getElementById('time').value;
+
+			const transportData = { transportType, origin, destination, time };
+
+			localStorage.setItem('transportData', JSON.stringify(transportData));
+
+			displayData(transportData);
+		});
+
+		function displayData(data) {
+			const card = document.getElementById('card');
+			card.innerHTML = `
+			<div class="card p-4 mt-2">
+												<div
+													class="first d-flex justify-content-between align-items-center">
+													<div class="info">
+														<span class="d-block name">${data.transportType}</span>
+														<span class="order"></span>
+
+													</div>
+													<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
+														width="24" height="24">
+														<path
+															d="M288 0C422.4 0 512 35.2 512 80V96l0 32c17.7 0 32 14.3 32 32v64c0 17.7-14.3 32-32 32l0 160c0 17.7-14.3 32-32 32v32c0 17.7-14.3 32-32 32H416c-17.7 0-32-14.3-32-32V448H192v32c0 17.7-14.3 32-32 32H128c-17.7 0-32-14.3-32-32l0-32c-17.7 0-32-14.3-32-32l0-160c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h0V96h0V80C64 35.2 153.6 0 288 0zM128 160v96c0 17.7 14.3 32 32 32H272V128H160c-17.7 0-32 14.3-32 32zM304 288H416c17.7 0 32-14.3 32-32V160c0-17.7-14.3-32-32-32H304V288zM144 400a32 32 0 1 0 0-64 32 32 0 1 0 0 64zm288 0a32 32 0 1 0 0-64 32 32 0 1 0 0 64zM384 80c0-8.8-7.2-16-16-16H208c-8.8 0-16 7.2-16 16s7.2 16 16 16H368c8.8 0 16-7.2 16-16z"
+															fill="#4c40e0" />
+													</svg>
+												</div>
+												<hr>
+												<div class="detail">
+													<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="18" height="18"><path d="M256 0c17.7 0 32 14.3 32 32V66.7C368.4 80.1 431.9 143.6 445.3 224H480c17.7 0 32 14.3 32 32s-14.3 32-32 32H445.3C431.9 368.4 368.4 431.9 288 445.3V480c0 17.7-14.3 32-32 32s-32-14.3-32-32V445.3C143.6 431.9 80.1 368.4 66.7 288H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H66.7C80.1 143.6 143.6 80.1 224 66.7V32c0-17.7 14.3-32 32-32zM128 256a128 128 0 1 0 256 0 128 128 0 1 0 -256 0zm128-80a80 80 0 1 1 0 160 80 80 0 1 1 0-160z" fill="#4c40e0"/></svg> ${data.origin} </span>
+												</div>
+												<br>
+												<div class="detail">
+													<span class="d-block text"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="18" height="18"><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z" fill="#4c40e0"/></svg> ${data.destination} </span>
+												</div>
+												<hr>
+												<div class="  money d-flex flex-row align-items-center">
+													<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="18" height="18"><path d="M464 256A208 208 0 1 1 48 256a208 208 0 1 1 416 0zM0 256a256 256 0 1 0 512 0A256 256 0 1 0 0 256zM232 120V256c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24z" fill="#4c40e0" /></svg>
+													<span class="ml-2">${data.time}</span>
+												</div>
+												<div class="last d-flex align-items-center mt-3">
+													<span class="address-line">CAMBIAR MI RUTA</span>
+												</div>
+											</div>`;
+		}								
+	</script>
+
+	<script>
+		const lineas = {
+			L1: ["Mamá Tingó", "Gregorio Urbano Gilbert", "Gregorio Luperón", "José Francisco Peña Gómez", "Hermanas Mirabal", "Máximo Gómez", "Los Taínos", "Pedro Livio Cedeño", "Juan Pablo Duarte", "Centro de los Héroes", "Casandra Damirón", "La Feria", "Eduardo Brito", "Ramón Cáceres"],
+			L2: ["Concepción Bona", "María Montez", "Pedro Francisco Bonó", "Francisco Gregorio Billini", "Ulises Francisco Espaillat", "Pedro Mir", "Freddy Beras Goico", "Juan Ulises García Saleta", "Coronel Rafael Tomás Fernández Domínguez", "Mauricio Báez", "Trina de Moya", "Bonao"],
+			Autos: ["Los Alcarrizos", "Villa Mella", "Boca Chica", "La Caleta", "San Pedro de Macorís", "Hainamosa", "El Seibo", "Hato Mayor", "Bonao", "Santiago"],
+			OMSA: ["Av. 27 de Febrero (Induveca)", "Av. Winston Churchill (frente a Plaza Central)",
+				"Av. Abraham Lincoln (frente al Banco Popular)", "Av. John F. Kennedy (frente al Centro Olímpico"]
+		};
+
+		const selectOrigen = document.getElementById('origin');
+		const selectDestino = document.getElementById('destination');
+		const selectTransporte = document.getElementById('transport-type');
+
+		function agregarEstaciones(estaciones, select) {
+			estaciones.forEach(estacion => {
+				const option = document.createElement('option');
+				option.text = estacion;
+				option.value = estacion;
+				select.add(option);
+			});
+		}
+
+		function limpiarSelect(select) {
+			select.innerHTML = ''; // Limpiar opciones anteriores
+		}
+
+		selectTransporte.addEventListener('change', function () {
+			limpiarSelect(selectOrigen);
+			limpiarSelect(selectDestino);
+
+			const tipoTransporte = selectTransporte.value;
+
+			if (tipoTransporte === 'Metro') {
+				agregarEstaciones(lineas['L1'], selectOrigen);
+				agregarEstaciones(lineas['L2'], selectDestino);
+			} else if (tipoTransporte === 'Auto') {
+				agregarEstaciones(lineas['Autos'], selectOrigen);
+				agregarEstaciones(lineas['Autos'], selectDestino);
+			} else if (tipoTransporte === 'OMSA') {
+				agregarEstaciones(lineas['OMSA'], selectOrigen);
+				agregarEstaciones(lineas['OMSA'], selectDestino);
+			}
+		});
+
+		// Llenar los selectores al cargar la página con las estaciones por defecto
+		agregarEstaciones(lineas['L1'], selectOrigen);
+		agregarEstaciones(lineas['L2'], selectDestino);
 	</script>
 </body>
+
 </html>
