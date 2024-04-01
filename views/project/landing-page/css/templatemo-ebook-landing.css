@@ -11,11 +11,11 @@ https://templatemo.com/tm-588-ebook-landing
 -----------------------------------------*/
 :root {
   --white-color:                  #ffffff;
-  --primary-color:                #E76F51;
+  --primary-color:                #ffffff;
   --secondary-color:              #E9C46A;
   --section-bg-color:             #f0f8ff;
   --custom-btn-bg-color:          #F4A261;
-  --custom-btn-bg-hover-color:    #E76F51;
+  --custom-btn-bg-hover-color:    #ffffff;
   --dark-color:                   #000000;
   --p-color:                      #717275;
   --link-hover-color:             #E76F51;
@@ -413,7 +413,7 @@ strong {
 }
 
 .sticky-wrapper.is-sticky .navbar {
-  background-color: rgba(0, 0, 0, 0.85);
+  background-color: rgba(255, 255, 255, 0.85);
 }
 
 .navbar {
@@ -569,7 +569,7 @@ strong {
   bottom: 0;
   left: 0;
   pointer-events: none;
-  background-color: rgba(0, 0, 0, 0.45);
+  background-color: rgba(255, 0, 0, 0.653);
 }
 
 .hero-section .row {
@@ -619,7 +619,7 @@ strong {
 
 
 /*---------------------------------------
-  CUSTOM BLOCK              
+  BLOQUES DE "QUE OFRECEMOS, NUESTROS SERVIVICOS"               
 -----------------------------------------*/
 .custom-block {
   background-image: url('../images/businessman-sitting-by-table-cafe.jpg');
@@ -639,7 +639,7 @@ strong {
   bottom: 0;
   left: 0;
   pointer-events: none;
-  background-color: rgba(0, 0, 0, 0.45);
+  background-color: rgba(0, 12, 238, 0.783);
 }
 
 .custom-block .avatar-image {
@@ -657,7 +657,7 @@ strong {
 }
 
 .custom-block-image-wrap {
-  background-color: rgba(231, 111, 81, 0.85);
+  background-color: rgba(0, 255, 42, 0.85);
   border-radius: 0 0 var(--border-radius-medium) var(--border-radius-medium);
   position: relative;
   z-index: 2;
@@ -678,7 +678,7 @@ strong {
 }
 
 .custom-block-info p {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 0, 195, 0.9);
   line-height: 1.8;
 }
 
