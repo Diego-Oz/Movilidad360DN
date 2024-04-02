@@ -12,13 +12,13 @@ https://templatemo.com/tm-588-ebook-landing
 :root {
   --white-color:                  #ffffff;
   --primary-color:                #ffffff;
-  --secondary-color:              #E9C46A;
+  --secondary-color:              #cf5f37;
   --section-bg-color:             #f0f8ff;
-  --custom-btn-bg-color:          #F4A261;
-  --custom-btn-bg-hover-color:    #ffffff;
+  --custom-btn-bg-color:          #ff0000;
+  --custom-btn-bg-hover-color:    #ff0000;
   --dark-color:                   #000000;
   --p-color:                      #717275;
-  --link-hover-color:             #E76F51;
+  --link-hover-color:             #ffffff;
 
   --body-font-family:             'Unbounded', sans-serif;
 
@@ -265,10 +265,10 @@ strong {
   CUSTOM BUTTON               
 -----------------------------------------*/
 .custom-btn {
-  background: var(--custom-btn-bg-color);
+  background: #00ccff; /* Cambia esto al color de fondo que desees, ESTE FUNCIONA, NO */
   border: 2px solid transparent;
   border-radius: var(--border-radius-large);
-  color: var(--white-color);
+  color: #FFFFFF; /* Cambia esto al color de texto que desees */
   font-size: var(--btn-font-size);
   font-weight: var(--font-weight-semibold);
   line-height: normal;
@@ -277,9 +277,10 @@ strong {
 }
 
 .custom-btn:hover {
-  background: var(--custom-btn-bg-hover-color);
-  color: var(--white-color);
+  background: #FFFFFF; /* Cambia esto al color de fondo que desees cuando el cursor pasa sobre el botón */
+  color: #ffffff; /* Cambia esto al color de texto que desees cuando el cursor pasa sobre el botón */
 }
+
 
 .custom-border-btn {
   background: transparent;
