@@ -6,18 +6,18 @@ https://templatemo.com/tm-588-ebook-landing
 
 */
 
+
 /*---------------------------------------
   CUSTOM PROPERTIES ( VARIABLES )             
 -----------------------------------------*/
 :root {
   --white-color:                  #ffffff;
-  --primary-color:                #ffffff;
-  --secondary-color:              #cf5f37;
-  --section-bg-color:             #f0f8ff;
-  --custom-btn-bg-color:          #ff0000;
-  --custom-btn-bg-hover-color:    #ff0000;
-  --dark-color:                   #000000;
-  --p-color:                      #717275;
+  --primary-color:                #ff0808;
+  --secondary-color:              #ff0000;
+  --section-bg-color:             #0088ff;
+  --custom-btn-bg-hover-color:    #ffffff;
+  --dark-color:                   #ff0000;
+  --p-color:                      #ffffff;
   --link-hover-color:             #ffffff;
 
   --body-font-family:             'Unbounded', sans-serif;
@@ -264,11 +264,49 @@ strong {
 /*---------------------------------------
   CUSTOM BUTTON               
 -----------------------------------------*/
+/* CSS */
+
+.custom-block {
+  transition: transform 0.3s ease-in-out;
+  box-shadow: 0px 10px 20px rgba(5, 0, 0, 0.76); /* AGREGA LAS SOMBRAS A LOS CUADROS */
+}
+
+.custom-block:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2); 
+}
+
+.custom-form.special {
+  width: 100%; 
+  max-width: 800px; 
+  background-color: #f8f9fa; 
+}
+
+button#subscribe-button {
+  background-color: #bbffbd; /* Green background */
+  border: none; /* No border */
+  color: white; /* White text */
+  padding: 10px 20px; /* Smaller padding */
+  text-align: center; /* Centered text */
+  text-decoration: none; /* No underline */
+  display: inline-block;
+  font-size: 14px; 
+  margin: 4px 2px;
+  cursor: pointer; 
+  transition-duration: 0.4s; 
+  border-radius: 12px; 
+}
+
+button#subscribe-button:hover {
+  background-color: #bcf5bf; /* Green background on hover */
+}
+
+
 .custom-btn {
-  background: #00ccff; /* Cambia esto al color de fondo que desees, ESTE FUNCIONA, NO */
+  background: #00ccff; /* Cambia esto al color de fondo, ESTE FUNCIONA, NO TOCAR*/
   border: 2px solid transparent;
   border-radius: var(--border-radius-large);
-  color: #FFFFFF; /* Cambia esto al color de texto que desees */
+  color: #FFFFFF; /* no usar */
   font-size: var(--btn-font-size);
   font-weight: var(--font-weight-semibold);
   line-height: normal;
@@ -277,8 +315,8 @@ strong {
 }
 
 .custom-btn:hover {
-  background: #FFFFFF; /* Cambia esto al color de fondo que desees cuando el cursor pasa sobre el botón */
-  color: #ffffff; /* Cambia esto al color de texto que desees cuando el cursor pasa sobre el botón */
+  background: #FFFFFF; /* no usar */
+  color: #ffffff; /* no usar */
 }
 
 
@@ -406,6 +444,17 @@ strong {
 /*---------------------------------------
   NAVIGATION              
 -----------------------------------------*/
+
+
+.custom-block {
+  transition: transform 0.3s ease-in-out;
+}
+
+.custom-block:hover {
+  transform: scale(1.05);
+}
+
+
 .sticky-wrapper {
   position: absolute;
   top: 0;
