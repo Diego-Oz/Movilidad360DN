@@ -1,0 +1,289 @@
+/* Estilos Generales */
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+.main-panel {
+    padding: 20px;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; 
+    flex-direction: column;
+}
+
+.card {
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+    width: calc(100% - 40px);
+    box-sizing: border-box;
+    margin-top: 25px;
+}
+
+.card-header {
+    background: linear-gradient(60deg,#ffffff, #eee);
+    color: white;
+    padding: 20px;
+    border-radius: 3px 3px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card-tools {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.card-title {
+    margin: 0;
+    font-weight: 300;
+    font-size: 1.5em;
+}
+
+.card-body {
+    padding: 15px;
+    position: relative;
+}
+
+/* Estilos para el botón */
+.btn {
+    text-transform: uppercase;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    margin: 0 5px;
+    border-radius: 30px;
+    padding: 8px 20px;
+}
+
+.btn-details {
+    margin-left: auto; 
+    text-decoration: none; 
+}
+
+.btn-primary {
+        position: absolute;
+        bottom: 10px; 
+        left: 10px; 
+        z-index: 10; 
+        background-color: #ffffff; 
+        color: #333333; 
+        border: 1px solid #dddddd; 
+        padding: 12px 24px; 
+        border-radius: 4px; 
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2); 
+        transition: all 0.3s ease; 
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: #f5f5f5; 
+    border-color: #cccccc; 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3); 
+}
+    
+.btn-label {
+    margin-right: 1px; 
+    transition: transform 0.2s ease-in-out;
+}
+
+.btn-label i {
+    margin-right: 5px;
+}
+
+.btn-info {
+    background-color: #4e4e4e; 
+    font-weight: bold;
+    color: white; 
+    padding: 10px 15px; 
+    margin-right: 10px; 
+    border-radius: 15px; 
+    font-size: 0.9rem; 
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3); 
+    transition: all 0.2s ease-in-out; 
+    border: none;
+    text-decoration: none;
+    text-transform: none;
+}
+
+.btn-info:hover {
+    background-color: #0563bb; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transform: scale(1.1);
+}
+
+/* Estilos para los gráficos */
+.chart-container {
+    width: 100%; 
+    height: auto; 
+    padding: 20px; 
+
+}
+
+.card.card-primary .card-header {
+    background: linear-gradient(60deg,#ffffff, #eee);
+}
+
+.card.card-primary .card-title {
+    color: rgb(65 58 58); 
+}
+
+/* Estilos para la sección de categoría de ventas diarias */
+.card-category {
+    color: #000000; 
+    font-size: 0.9em;
+}
+
+.card.card-primary {
+    background-color: #fff; 
+    border-left: 5px solid #afc0d1; 
+}
+
+.card.card-primary .card-body h1 {
+    color: white;
+    font-weight: 300;
+    margin-bottom: 20px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 310px; 
+    width: calc(100% - 290px); 
+    box-sizing: border-box;
+    margin-right: 0;
+}
+
+.pb-0 {
+    padding-bottom: 0 !important;
+}
+
+.fw-bold {
+    font-weight: bold;
+}
+
+.float-right {
+    float: right;
+}
+
+.mb-2 {
+    margin-bottom: 1.5rem;
+}
+
+.mt-2 {
+    margin-top: 1.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 991.98px) {
+    .content {
+        justify-content: center;
+    }
+
+    .card {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+/* Estilos Generales */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4; 
+}
+
+/* Contenedor Principal */
+.main-panel {
+    max-width: 1200px; 
+    margin: 20px auto; 
+    padding: 20px;
+    background: #fff; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+}
+
+.card {
+    background: #fff;
+    margin-bottom: 30px;
+    border-left: 5px solid #afc0d1; 
+}
+
+.card-header {
+    color: #333; 
+    background: linear-gradient(60deg,#ffffff, #eee);
+    padding: 15px 20px;
+}
+
+.card-title {
+    font-size: 1.2em; 
+    font-weight: bold;
+}
+
+#statisticsChart {
+    height: 250px; 
+}
+
+.card-primary .card-header {
+    background: linear-gradient(60deg,#ffffff, #eee);
+}
+
+.card-primary .card-body {
+    padding: 15px;
+}
+
+#trafficHeatmap {
+    width: 100%; 
+    height: 300px;
+    padding: 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .content {
+        flex-direction: column;
+    }
+
+    .card {
+        width: 100%; 
+    }
+
+    #statisticsChart, #dailySalesChart {
+        height: 200px; 
+    }
+
+    .chart-container {
+        max-width: 100%;
+    }
+}
+
+/* Estilos específicos para el gráfico de tráfico */
+.card-traffic #trafficChart {
+        display: flex;
+        margin: auto; 
+    }
+
+/* Estilos para el contenedor de la tarjeta del gráfico de tráfico */
+.card-traffic {
+    width: calc(100% - 40px); 
+    padding: 15px; 
+    box-sizing: border-box; 
+}
+
+.card-traffic .card-body canvas {
+   width: auto; 
+    height: 400px; 
+    aspect-ratio: 16 / 9; 
+}
+
+/* Ajustes específicos para el cuerpo de la tarjeta del gráfico de tráfico */
+.card-traffic .card-body {
+    position: relative; 
+    padding-bottom: 20px; 
+}
