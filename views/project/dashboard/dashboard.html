@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Movilidad360DN</title>
+    <link rel="stylesheet" href="../dashboard/css/styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="../dashboard/css/styles-charts.css">
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwRQObqQKPPTqpIDH6yrFTIefdBNbPp1s&callback=initMap">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <aside id="sidebar">
+        <div class="sidebar sidebar-style-2">
+            <div class="sidebar-wrapper scrollbar scrollbar-inner">
+                <div class="sidebar-content">
+                    <div id="logo-container">
+                        <h1>Movilidad360DN</h1>
+                    </div>
+                    <ul class="nav nav-primary">
+                        <li class="nav-section">
+                            <span class="sidebar-mini-icon"><i class="fa fa-ellipsis-h"></i></span>
+                            <h4 class="text-section">MENÚ</h4>
+                        </li>
+                        <li class="nav-item active">
+                            <a href="#dashboard">
+                                <i class="fas fa-home"></i>
+                                <p>Dashboard</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#reportes">
+                                <i class="fas fa-clipboard-list"></i>
+                                <p>Reportes</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#recargas">
+                                <i class="fas fa-wallet"></i>
+                                <p>Recargas</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#comentarios">
+                                <i class="far fa-comment"></i>
+                                <p>Comentarios</p>
+                            </a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a href="#Rutas">
+                                <i class="fas fa-route"></i>
+                                <p>Rutas</p>
+                            </a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a href="#trafico">
+                                <i class="fas fa-traffic-light"></i>
+                                <p>Tráfico</p>
+                            </a>
+                        </li>
+                    </ul>
+        
+            <!-- Sección inferior del sidebar -->
+                <ul class="nav nav-primary">
+                    <li class="nav-section">
+                      <h4 class="text-section">PREFERENCIAS</h4>
+                    </li>
+                        <li class="nav-item">
+                        <a href="#perfil">
+                            <i class="fas fa-user"></i>
+                            <p>Perfil</p>
+                        </a>
+                        </li>
+                        <li class="nav-item">
+                        <a href="#configuracion">
+                        <i class="fas fa-cog"></i>
+                            <p>Configuración</p>
+                        </a>
+                        </li>
+                      </ul>
+                </div>
+            </div>
+        </div>
+    </aside>    
+
+   <!-- Encabezado del Dashboard -->
+<header id="dashboard-header">
+    <div id="search-container">
+        <input type="search" id="search-bar" placeholder="Filtrar Data">
+    </div>
+    <div id="profile-container">
+        <i class="fas fa-bell"></i>
+        <img src="../dashboard/img/foto-profe.jpg" alt="Perfil" id="profile-pic">
+        <span id="profile-span">Joerlyn M.</span>
+        <i class="fas fa-chevron-down"></i>
+    </div>    
+</header>
+
+<!-- Título del Dashboard y Estado del Sistema -->
+<div class="dashboard-header">
+    <div class="dashboard-heading">
+        <h2 class="dashboard-title">Dashboard</h2>
+        <div class="system-status">
+            <img src="../dashboard/img/logo-new-m360dn.jpg" alt="SIT Logo" class="sit-logo"> 
+            <div>
+                <span class="system-name">SIT | Sistema Integral de Transporte <i class="fas fa-check-circle"></i></span>
+                <span class="status-text">Status: Activo</span>
+            </div>
+        </div>
+    </div>
+    <div class="date-selector">
+        <i class="fas fa-calendar-alt"></i>
+        <input type="text" id="date-range" readonly placeholder="19.12.2023 - 25.12.2023">
+        <button class="date-dropdown-button">
+            <i class="fas fa-chevron-down"></i>
+        </button>
+    </div>
+</div>
+
+<div class="row">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Flujo: Centro de Reportes</div>
+                <div class="card-tools">
+                    <a href="#" class="btn btn-info btn-border btn-round btn-sm mr-2 export-btn">
+                        <span class="btn-label">
+                            <i class="fas fa-file-export"></i>
+                        </span>
+                        Exportar
+                    </a>
+                    <a href="#" class="btn btn-info btn-border btn-round btn-sm print-btn">
+                        <span class="btn-label">
+                            <i class="fa fa-print"></i>
+                        </span>
+                        Imprimir
+                    </a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="chart-container">
+                    <canvas id="statisticsChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="card card-primary card-traffic">
+            <div class="card-header">
+              <div class="card-title">Número de Vehículos en Avenidas Principales</div>
+            </div>
+            <div class="card-body pb-0">
+              <canvas id="trafficChart"></canvas> 
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Mapa: Principales Rutas y Estaciones de Transporte</h4>
+                <div class="card-tools">
+                    <a href="../maps/jqvmap.html" class="btn btn-info btn-border btn-round btn-sm">Ver Detalles</a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div id="trafficHeatmap" style="height: 300px;"></div>
+            </div>
+        </div>
+</div>
+    
+    <script src="../dashboard/scripts/scripts.js"></script>
+    <script src="../dashboard/scripts/Leaflet.js"></script>
+    <script src="../dashboard/scripts/funcionalidad.js"></script>
+
+</body>
+</html>
