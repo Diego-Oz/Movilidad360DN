@@ -488,9 +488,9 @@ button#subscribe-button:hover {
   vertical-align: top;
   color: var(--white-color);
   font-size: var(--h6-font-size);
-  width: 40px;
-  height: 40px;
-  line-height: 40px;
+  width: 70px;
+  height: 70px;
+  line-height: 70px;
   text-align: center;
   position: relative;
 }
@@ -619,7 +619,7 @@ button#subscribe-button:hover {
   bottom: 0;
   left: 0;
   pointer-events: none;
-  background-color: rgba(255, 0, 0, 0.653);
+  background-color: #cfe7ff;
 }
 
 .hero-section .row {
@@ -663,7 +663,7 @@ button#subscribe-button:hover {
   height: 0;
   border-style: solid;
   border-width: 0 0 450px 450px;
-  border-color: transparent transparent var(--white-color) transparent;
+  border-color: black transparent var(--black-color) black transparent;
   pointer-events: none;
 }
 
@@ -672,6 +672,7 @@ button#subscribe-button:hover {
   BLOQUES DE "QUE OFRECEMOS, NUESTROS SERVIVICOS"               
 -----------------------------------------*/
 .custom-block {
+  text-align: center;
   background-image: url('../images/businessman-sitting-by-table-cafe.jpg');
   background-repeat: no-repeat;
   background-size: cover;
@@ -682,6 +683,7 @@ button#subscribe-button:hover {
 }
 
 .custom-block::after {
+  text-align: center;
   content: "";
   position: absolute;
   top: 0;
@@ -689,7 +691,7 @@ button#subscribe-button:hover {
   bottom: 0;
   left: 0;
   pointer-events: none;
-  background-color: rgba(0, 12, 238, 0.783);
+  background-color: rgba(255, 255, 255, 0.783);
 }
 
 .custom-block .avatar-image {
@@ -707,7 +709,7 @@ button#subscribe-button:hover {
 }
 
 .custom-block-image-wrap {
-  background-color: rgba(0, 255, 42, 0.85);
+  background-color: transparent !important;
   border-radius: 0 0 var(--border-radius-medium) var(--border-radius-medium);
   position: relative;
   z-index: 2;
@@ -737,12 +739,14 @@ button#subscribe-button:hover {
   THE BOOK SECTION            
 -----------------------------------------*/
 .book-section-info {
+  text-align: center;
   padding-top: 40px;
   padding-right: 40px;
   padding-left: 40px;
 }
 
 .nav-pills {
+  text-align: center;
   border: 2px solid var(--primary-color);
   border-radius: var(--border-radius-medium);
   position: sticky;
