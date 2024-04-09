@@ -264,16 +264,27 @@ strong {
 /*---------------------------------------
   CUSTOM BUTTON               
 -----------------------------------------*/
-/* CSS */
+.custom-block-image-wrap {
+  /* Establece el contenedor como un contenedor Flexbox */
+  display: flex;
+
+  /* Centra la imagen horizontalmente */
+  justify-content: center;
+
+  /* Centra la imagen verticalmente */
+  align-items: center;
+}
+
+
 
 .custom-block {
   transition: transform 0.3s ease-in-out;
-  box-shadow: 0px 10px 20px rgba(5, 0, 0, 0.76); /* AGREGA LAS SOMBRAS A LOS CUADROS */
+  box-shadow: 0px 10px 20px rgba(142, 135, 135, 0.76); /* AGREGA LAS SOMBRAS A LOS CUADROS */
 }
 
 .custom-block:hover {
   transform: scale(1.05);
-  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2); 
+  box-shadow: 0px 15px 30px rgba(193, 163, 163, 0.2); 
 }
 
 .custom-form.special {
@@ -444,6 +455,16 @@ button#subscribe-button:hover {
 /*---------------------------------------
   NAVIGATION              
 -----------------------------------------*/
+.imagen-especifica {
+  /* Cambia el ancho según tus necesidades */
+  width: 200px; 
+}
+
+
+
+.nav-link {
+    font-size: 18px !important; /* Ajusta el valor según tus preferencias */
+}
 
 
 .custom-block {
@@ -619,7 +640,7 @@ button#subscribe-button:hover {
   bottom: 0;
   left: 0;
   pointer-events: none;
-  background-color: #cfe7ff;
+  background-color: #ffffff;
 }
 
 .hero-section .row {
