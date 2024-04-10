@@ -264,15 +264,23 @@ strong {
 /*---------------------------------------
   CUSTOM BUTTON               
 -----------------------------------------*/
+body {
+  background-image: url('../');
+  background-size: cover;
+  background-position: 50% 50%; 
+}
+
+
 .custom-block-image-wrap {
-  /* Establece el contenedor como un contenedor Flexbox */
   display: flex;
-
-  /* Centra la imagen horizontalmente */
   justify-content: center;
-
-  /* Centra la imagen verticalmente */
   align-items: center;
+}
+
+
+section {
+  margin: 20px !important;
+  padding: 40px !important;
 }
 
 
@@ -640,7 +648,7 @@ button#subscribe-button:hover {
   bottom: 0;
   left: 0;
   pointer-events: none;
-  background-color: #ffffff;
+  background-color:none;
 }
 
 .hero-section .row {
