@@ -3,7 +3,7 @@
 
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<title>MOVILIDAD360DN</title>
+	<title>Movilidad360DN</title>
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
 	<link rel="icon" href="../../assets/img/icon.ico" type="image/x-icon" />
 
@@ -27,7 +27,8 @@
 	<link href='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css' rel='stylesheet' />
 	<style>
 		#map {
-			height: 500px;
+			height: 690px;
+			width: 1690px;
 		}
 
 		/* Estilos para el formulario */
@@ -41,7 +42,7 @@
 
 		#transport-form label {
 			font-weight: bold;
-			font-size: 12px !important;
+			font-size: 14px !important;
 		}
 
 		#transport-type,
@@ -49,11 +50,12 @@
 		#destination,
 		#time {
 			width: 100%;
-			padding: 2px;
-			margin-bottom: 4px;
+			height: 40px;
+			padding: 4px;
+			margin-bottom: 8px;
 			border: 1px solid #ced4da;
 			border-radius: 5px;
-			font-size: 14px;
+			font-size: 16px;
 		}
 
 		#transport-type:focus,
@@ -73,7 +75,7 @@
 			border-radius: 10px;
 			cursor: pointer;
 			transition: background-color 0.3s ease;
-			margin-top: 5px;
+			margin-top: 8px;
 		}
 
 		button[type="submit"]:hover {
@@ -194,8 +196,12 @@
 			<!-- Logo Header -->
 			<div class="logo-header" data-background-color="white">
 
-				<a href="index.html" class="logo">
-					<img src="../assets/img/mov360dn.svg" alt="navbar brand" class="navbar-brand">
+				<a href="../maps/jqvmap.html" class="logo">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" width="200" height="50">
+						<text x="0" y="32" font-family="Palatino" font-size="25" font-weight="bold">
+						<tspan fill="black">Movilidad360DN</tspan>
+						</text>
+						</svg>
 				</a>
 				<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse"
 					data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -225,7 +231,7 @@
 										<i class="fa fa-search search-icon"></i>
 									</button>
 								</div>
-								<input type="text" placeholder="Search ..." class="form-control">
+								<input type="text" placeholder="Filtrar ..." class="form-control">
 							</div>
 						</form>
 					</div>
@@ -237,73 +243,80 @@
 			<!-- End Navbar -->
 		</div>
 		<!-- Sidebar -->
-		<div class="sidebar sidebar-style-2">
-			<div class="sidebar-wrapper scrollbar scrollbar-inner">
-				<div class="sidebar-content">
+		<aside id="sidebar">
+			<div class="sidebar sidebar-style-2">
+				<div class="sidebar-wrapper scrollbar scrollbar-inner">
+					<div class="sidebar-content">
+						<div id="logo-container">
+							<!-- <h1>Movilidad360DN</h1> -->
+						</div>
+						<ul class="nav nav-primary">
+							<li class="nav-section">
+								<span class="sidebar-mini-icon"><i class="fa fa-ellipsis-h"></i></span>
+								<h4 class="text-section">MENÚ</h4>
+							</li>
+							<li class="nav-item">
+								<a href="../dashboard/dashboard.html">
+									<i class="fas fa-home"></i>
+									<p>Dashboard</p>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a href="#reportes">
+									<i class="fas fa-clipboard-list"></i>
+									<p>Reportes</p>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a href="#recargas">
+									<i class="fas fa-wallet"></i>
+									<p>Recargas</p>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a href="#comentarios">
+									<i class="far fa-comment"></i>
+									<p>Comentarios</p>
+								</a>
+							</li>
+							
+							<li class="nav-item active">
+								<a href="../maps/jqvmap.html">
+									<i class="fas fa-route"></i>
+									<p>Rutas</p>
+								</a>
+							</li>
+							
+							<li class="nav-item">
+								<a href="#trafico">
+									<i class="fas fa-traffic-light"></i>
+									<p>Tráfico</p>
+								</a>
+							</li>
+						</ul>
+			
+				<!-- Sección inferior del sidebar -->
 					<ul class="nav nav-primary">
 						<li class="nav-section">
-							<span class="sidebar-mini-icon"><i class="fa fa-ellipsis-h"></i></span>
-							<h4 class="text-section">Menú</h4>
+						  <h4 class="text-section">PREFERENCIAS</h4>
 						</li>
-						<li class="nav-item active">
-							<a href="#dashboard">
-								<i class="fas fa-home"></i>
-								<p>Dashboard</p>
+							<li class="nav-item">
+							<a href="#perfil">
+								<i class="fas fa-user"></i>
+								<p>Perfil</p>
 							</a>
-						</li>
-						<li class="nav-item">
-							<a href="#reportes">
-								<i class="fas fa-clipboard-list"></i>
-								<p>Reportes</p>
+							</li>
+							<li class="nav-item">
+							<a href="#configuracion">
+							<i class="fas fa-cog"></i>
+								<p>Configuración</p>
 							</a>
-						</li>
-						<li class="nav-item">
-							<a href="#recargas">
-								<i class="fas fa-wallet"></i>
-								<p>Recargas</p>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a href="#comentarios">
-								<i class="fa-regular fa-comment"></i>
-								<p>Comentarios</p>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a href="#Rutas">
-								<i class="fa-solid fa-route"></i>
-								<p>Rutas</p>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a href="#trafico">
-								<i class="fa-solid fa-traffic-light"></i>
-								<p>Tráfico</p>
-							</a>
-						</li>
-					</ul>
-		
-			<!-- Sección inferior del sidebar -->
-				<ul class="nav nav-primary">
-					<li class="nav-section">
-					  <h4 class="text-section">PREFERENCIAS</h4>
-					</li>
-						<li class="nav-item">
-						<a href="#perfil">
-							<i class="fas fa-user"></i>
-							<p>Perfil</p>
-						</a>
-						</li>
-						<li class="nav-item">
-						<a href="#configuracion">
-						<i class="fas fa-cog"></i>
-							<p>Configuración</p>
-						</a>
-						</li>
-					  </ul>
+							</li>
+						  </ul>
+					</div>
 				</div>
 			</div>
-		</div>
+		</aside>  
 
 		<div class="main-panel">
 			<div class="content">
@@ -318,8 +331,9 @@
 									</div> -->
 
 									<div class="col-3" id="small">
+										<div style="font-size: 18px; margin: 8px; padding: 8px; font-weight: bold; color: #000;">Escoge tu ruta</div>
 										<form id="transport-form">
-											<label for="transport-type">Elige tu ruta</label>
+											<label for="transport-type">Transporte:</label>
 											<select id="transport-type">
 												<option value="Metro">Metro</option>
 												<option value="Auto">Auto</option>
@@ -491,7 +505,7 @@
 		function displayData(data) {
 			const card = document.getElementById('card');
 			card.innerHTML = `
-			<div class="card p-4 mt-2">
+			<div class="card col-12 p-4 mt-2">
 												<div
 													class="first d-flex justify-content-between align-items-center">
 													<div class="info">
