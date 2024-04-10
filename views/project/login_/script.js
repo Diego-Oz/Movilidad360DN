@@ -14,6 +14,10 @@ btnSignUp.addEventListener("click", e => {
     formRegister.classList.remove("hide")
 })
 
+function dashboard(){
+    window.location.href = "../dashboard/dashboard.html";
+}
+
 function validarInicioSesion() {
     var usuario = "jmorfe@unibe.com"; // Usuario de ejemplo
     var contraseña = "123456"; // Contraseña de ejemplo
@@ -32,6 +36,7 @@ function validarInicioSesion() {
         emailLabel.classList.add("success");
         passwordLabel.classList.remove("error");
         passwordLabel.classList.add("success");
+        dashboard();
         return true;
     } else {
         emailInput.classList.remove("success");

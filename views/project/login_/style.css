@@ -149,6 +149,21 @@ body {
   color: #a7a7a7;
 }
 
+.button{
+  background-color: #c1ece8;
+  color: #2b3152;
+  border-radius: 20px;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  margin-top: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .1);
+}
+
+.button:hover{
+  background-color: #4fd1c4;
+}
+
 .form input[type="submit"] {
   background-color: #c1ece8;
   color: #2b3152;

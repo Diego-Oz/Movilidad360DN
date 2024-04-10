@@ -21,38 +21,9 @@
 
 </head>
 <body>
-
-    <!--barra de opciones-->
-    <!-- <header class="header">
-        <div class="logo">
-          <img src="img/logo_login.jpg" alt="Logo de la pagina">
-         </div>
-        <nav class="nav">
-          <button class="nav-toggle" aria-label="Abrir menú">
-            <i class="fas fa-bars"></i>
-          </button>
-          <ul class="nav-menu">
-            <li class="nav-menu-item">
-              <a href="#" class="nav-menu-link nav-link">Nosotros</a>
-            </li>
-            <li class="nav-menu-item">
-              <a href="#" class="nav-menu-link nav-link">Contacto</a>
-            </li>
-            <li class="nav-menu-item">
-              <a href="#" class="nav-menu-link nav-link"> Más </a>
-            </li>
-            <li class="nav-menu-item">
-              <a href="#" class="nav-menu-link nav-link nav-menu-link_active"
-                >Free Dowload</a
-              >
-            </li>
-          </ul>
-        </nav>
-      </header> -->
       <main>
        
       </main>
-     <!--barra de opciones-->
 
      <!--el login-->
     <div class="container-form register" style="margin-bottom: 90px;">
@@ -60,7 +31,7 @@
             <div class="info-childs">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" width="180" height="50">
                     <text x="0" y="35" font-family="Times New Roman" font-size="22" font-weight="bold">
-                    <tspan fill="black">Movilidad360DN</tspan>
+                    <tspan fill="black"><a href="../landing-page/index.html">Movilidad360DN</a></tspan>
                     </text>
                     </svg>
                 <h2>Bienvenido/a</h2>
@@ -110,7 +81,7 @@
             <div class="info-childs">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" width="180" height="50">
                     <text x="0" y="35" font-family="Times New Roman" font-size="22" font-weight="bold">
-                    <tspan fill="black">Movilidad360DN</tspan>
+                    <tspan fill="black"><a href="../landing-page/index.html">Movilidad360DN</a></tspan>
                     </text>
                     </svg>
                 <h2>Bienvenido/a </h2>
@@ -134,7 +105,7 @@
                     </a>
                 </div>
                 <p>o Iniciar Sesión con una cuenta</p>
-                <form class="form" onsubmit="return validarInicioSesion()">
+                <form class="form">
                     <label id="email-label">
                         <i class='bx bx-envelope'></i>
                         <input type="email" id="email" placeholder="Correo Electrónico">
@@ -143,7 +114,7 @@
                         <i class='bx bx-lock-alt'></i>
                         <input type="password" id="password" placeholder="Contraseña">
                     </label>
-                    <input type="submit" value="Iniciar Sesión">
+                    <input type="button" class="button" value="Iniciar Sesión" onclick="validarInicioSesion()">
                 </form>
             </div>
         </div>
