@@ -1,52 +1,82 @@
-const btnSignIn = document.getElementById("sign-in"),
-      btnSignUp = document.getElementById("sign-up"),
-      formRegister = document.querySelector(".register"),
-      formLogin = document.querySelector(".login");
+// Import Firebase
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
-btnSignIn.addEventListener("click", e => {
+// Configuración Firebase
+const firebaseConfig = {
+    apiKey: "AIzaSyBxx8bxy_ZWCCrA0XxzM2ed0GuXfR-dZN8",
+    authDomain: "movilidad-dn.firebaseapp.com",
+    projectId: "movilidad-dn",
+    storageBucket: "movilidad-dn.appspot.com",
+    messagingSenderId: "1084567359712",
+    appId: "1:1084567359712:web:4ecd508eedb0789874c085",
+    measurementId: "G-S7YE4FLN17"
+};
+
+// Inicializar Firebase y Auth
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+// Botones para alternar entre formularios
+const btnSignIn = document.getElementById("sign-in");
+const btnSignUp = document.getElementById("sign-up");
+const formRegister = document.querySelector(".register");
+const formLogin = document.querySelector(".login");
+
+btnSignIn.addEventListener("click", () => {
     formRegister.classList.add("hide");
-    formLogin.classList.remove("hide")
-})
+    formLogin.classList.remove("hide");
+});
 
-
-btnSignUp.addEventListener("click", e => {
+btnSignUp.addEventListener("click", () => {
     formLogin.classList.add("hide");
-    formRegister.classList.remove("hide")
-})
+    formRegister.classList.remove("hide");
+});
 
-function dashboard(){
-    window.location.href = "../dashboard/dashboard.html";
-}
-
-function validarInicioSesion() {
-    var usuario = "jmorfe@unibe.com"; // Usuario de ejemplo
-    var contraseña = "123456"; // Contraseña de ejemplo
-
-    var emailInput = document.getElementById("email");
-    var passwordInput = document.getElementById("password");
-    var emailLabel = document.getElementById("email-label");
-    var passwordLabel = document.getElementById("password-label");
-
-    if (emailInput.value === usuario && passwordInput.value === contraseña) {
-        emailInput.classList.remove("error");
-        emailInput.classList.add("success");
-        passwordInput.classList.remove("error");
-        passwordInput.classList.add("success");
-        emailLabel.classList.remove("error");
-        emailLabel.classList.add("success");
-        passwordLabel.classList.remove("error");
-        passwordLabel.classList.add("success");
-        dashboard();
-        return true;
-    } else {
-        emailInput.classList.remove("success");
-        emailInput.classList.add("error");
-        passwordInput.classList.remove("success");
-        passwordInput.classList.add("error");
-        emailLabel.classList.remove("success");
-        emailLabel.classList.add("error");
-        passwordLabel.classList.remove("success");
-        passwordLabel.classList.add("error");
-        return false;
+// Función para registrar usuario
+async function registerUser(email, password) {
+    try {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        alert("Cuenta creada exitosamente.");
+        
+        // Cambia al formulario de inicio de sesión después del registro exitoso
+        document.querySelector(".register").classList.add("hide");
+        document.querySelector(".login").classList.remove("hide");
+    } catch (error) {
+        console.error("Error en el registro:", error.message);
+        alert("Error en el registro: " + error.message);
     }
 }
+
+// Función para iniciar sesión
+async function loginUser(email, password) {
+    try {
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        // alert("Inicio de sesión exitoso.");
+        
+        // Redirige a la vista principal o dashboard después del inicio de sesión exitoso
+        window.location.href = "../dashboard/dashboard.html";
+    } catch (error) {
+        console.error("Error en el inicio de sesión:", error.message);
+        alert("Error en el inicio de sesión: " + error.message);
+    }
+}
+
+// Conecta los eventos `submit` de los formularios
+document.addEventListener("DOMContentLoaded", () => {
+    const registerForm = document.querySelector(".register .form");
+    registerForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const email = registerForm.querySelector("input[type='email']").value;
+        const password = registerForm.querySelector("input[type='password']").value;
+        registerUser(email, password);
+    });
+
+    const loginForm = document.querySelector(".login .form");
+    loginForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const email = loginForm.querySelector("input[type='email']").value;
+        const password = loginForm.querySelector("input[type='password']").value;
+        loginUser(email, password);
+    });
+});

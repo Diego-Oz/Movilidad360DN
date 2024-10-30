@@ -1,39 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="style2.css">  <!--css de la barra de opciones-->
-
+    <link rel="stylesheet" href="style2.css">
     <title>Movilidad360DN</title>
-    <link rel="icon" href="../../assets/img/icon.ico" type="image/x-icon"/>
-    <script
-      src="https://kit.fontawesome.com/7e5b2d153f.js"
-      crossorigin="anonymous"
-    ></script>
-    <script defer src="index.js"></script>
-
+    <link rel="icon" href="../../assets/img/icon.ico" type="image/x-icon" />
+    <script src="https://kit.fontawesome.com/7e5b2d153f.js" crossorigin="anonymous"></script>
+    <script defer src="script.js" type="module"></script>
 </head>
-<body>
-      <main>
-       
-      </main>
 
-     <!--el login-->
+<body>
+    <main></main>
+
+    <!-- Registro -->
     <div class="container-form register" style="margin-bottom: 90px;">
         <div class="information">
             <div class="info-childs">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" width="180" height="50">
                     <text x="0" y="35" font-family="Times New Roman" font-size="22" font-weight="bold">
-                    <tspan fill="black"><a href="../landing-page/index.html">Movilidad360DN</a></tspan>
+                        <tspan fill="black"><a href="../landing-page/index.html">Movilidad360DN</a></tspan>
                     </text>
-                    </svg>
+                </svg>
                 <h2>Bienvenido/a</h2>
                 <p>¿Tienes cuenta? Ingresa a Movilidad360DN 　　　　　　　　　　　　　　　　　</p>
                 <input type="button" value="Iniciar Sesión" id="sign-in">
@@ -42,69 +38,54 @@
         <div class="form-information">
             <div class="form-information-childs">
                 <h2>Crear una Cuenta</h2>
-                <!--iconos con su link-->
                 <div class="icons">
-                    <a href="https://goo.su/KUVhzS">
-                        <i class='bx bxl-google'></i>
-                    </a>
-                    <a href="https://github.com/login">
-                        <i class='bx bxl-github'></i>
-                    </a>
-                    <a href="https://www.linkedin.com/login/es">
-                        <i class='bx bxl-linkedin' ></i>
-                    </a>
-                    
+                    <a href="https://goo.su/KUVhzS"><i class='bx bxl-google'></i></a>
+                    <a href="https://github.com/login"><i class='bx bxl-github'></i></a>
+                    <a href="https://www.linkedin.com/login/es"><i class='bx bxl-linkedin'></i></a>
                 </div>
                 <p>o usa tu email para registrarte</p>
                 <form class="form">
                     <label>
-                        <i class='bx bx-user' ></i>
+                        <i class='bx bx-user'></i>
                         <input type="text" placeholder="Nombre Completo">
                     </label>
-                    <label >
-                        <i class='bx bx-envelope' ></i>
+                    <label>
+                        <i class='bx bx-envelope'></i>
                         <input type="email" placeholder="Correo Electronico">
                     </label>
                     <label>
-                        <i class='bx bx-lock-alt' ></i>
+                        <i class='bx bx-lock-alt'></i>
                         <input type="password" placeholder="Contraseña">
                     </label>
                     <input type="submit" value="Registrarse">
-                </form>
+                </form>                
             </div>
         </div>
     </div>
 
-
+    <!-- Inicio de Sesión -->
     <div class="container-form login hide" style="margin-bottom: 90px;">
         <div class="information">
             <div class="info-childs">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" width="180" height="50">
                     <text x="0" y="35" font-family="Times New Roman" font-size="22" font-weight="bold">
-                    <tspan fill="black"><a href="../landing-page/index.html">Movilidad360DN</a></tspan>
+                        <tspan fill="black"><a href="../landing-page/index.html">Movilidad360DN</a></tspan>
                     </text>
-                    </svg>
-                <h2>Bienvenido/a </h2>
-                <p>¿No tienes una cuenta en Movilidad360 DN? 　　　　　　　　　　　　　　　　　</p>
+                </svg>
+                <h2>Bienvenido/a</h2>
+                <p>¿No tienes una cuenta en Movilidad360DN? 　　　　　　　　　　　　　　　　　</p>
                 <input type="button" value="Registrarse" id="sign-up">
             </div>
         </div>
         <div class="form-information">
             <div class="form-information-childs">
                 <h2>Iniciar Sesión</h2>
-                 <!--iconos con su link-->
-                 <div class="icons">
-                    <a href="https://goo.su/KUVhzS">
-                        <i class='bx bxl-google'></i>
-                    </a>
-                    <a href="https://github.com/login">
-                        <i class='bx bxl-github'></i>
-                    </a>
-                    <a href="https://www.linkedin.com/login/es">
-                        <i class='bx bxl-linkedin' ></i>
-                    </a>
+                <div class="icons">
+                    <a href="https://goo.su/KUVhzS"><i class='bx bxl-google'></i></a>
+                    <a href="https://github.com/login"><i class='bx bxl-github'></i></a>
+                    <a href="https://www.linkedin.com/login/es"><i class='bx bxl-linkedin'></i></a>
                 </div>
-                <p>o Iniciar Sesión con una cuenta</p>
+                <p>o usa tu email para iniciar sesión</p>
                 <form class="form">
                     <label id="email-label">
                         <i class='bx bx-envelope'></i>
@@ -114,12 +95,10 @@
                         <i class='bx bx-lock-alt'></i>
                         <input type="password" id="password" placeholder="Contraseña">
                     </label>
-                    <input type="button" class="button" value="Iniciar Sesión" onclick="validarInicioSesion()">
-                </form>
+                    <input type="submit" value="Iniciar Sesión">
+                </form>                
             </div>
         </div>
     </div>
-    <script src="script.js"></script>
-    
 </body>
 </html>
