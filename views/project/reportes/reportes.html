@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase CRUD</title>
+    <link rel="stylesheet" href="reportes.css">
+    <link rel="icon" href="../../assets/img/icon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../dashboard/css/styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <!-- Firebase SDK -->
+    <!-- Firebase App (Debe estar incluido siempre) -->
+    <script src="https://www.gstatic.com/firebasejs/11.0.1/firebase-app-compat.js"></script>
+    <!-- Firebase Firestore (Para Firestore Database) -->
+    <script src="https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore-compat.js"></script>
+
+</head>
+
+<body>
+    <aside id="sidebar">
+        <div class="sidebar sidebar-style-2">
+            <div class="sidebar-wrapper scrollbar scrollbar-inner">
+                <div class="sidebar-content">
+                    <div id="logo-container">
+                        <h1>Movilidad360DN</h1>
+                    </div>
+                    <ul class="nav nav-primary">
+                        <li class="nav-section">
+                            <span class="sidebar-mini-icon"><i class="fa fa-ellipsis-h"></i></span>
+                            <h4 class="text-section">MENÚ</h4>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../dashboard/">
+                                <i class="fas fa-home"></i>
+                                <p>Dashboard</p>
+                            </a>
+                        </li>
+                        <li class="nav-item active">
+                            <a href="#reportes">
+                                <i class="fas fa-clipboard-list"></i>
+                                <p>Reportes</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#recargas">
+                                <i class="fas fa-wallet"></i>
+                                <p>Recargas</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#comentarios">
+                                <i class="far fa-comment"></i>
+                                <p>Comentarios</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="../maps/jqvmap.html">
+                                <i class="fas fa-route"></i>
+                                <p>Rutas</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#trafico">
+                                <i class="fas fa-traffic-light"></i>
+                                <p>Tráfico</p>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <!-- Sección inferior del sidebar -->
+                    <ul class="nav nav-primary">
+                        <li class="nav-section">
+                            <h4 class="text-section">PREFERENCIAS</h4>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#perfil">
+                                <i class="fas fa-user"></i>
+                                <p>Perfil</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../login_/login.html">
+                                <i class="fas fa-cog"></i>
+                                <p>Configuración</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!--  -->
+
+    <div class="container">
+        <h1>Registro y Visualización de Datos en Firebase</h1>
+
+        <!-- Formulario para añadir datos -->
+        <form id="data-form">
+            <input type="text" id="nombre" placeholder="Nombre" required>
+            <input type="number" id="edad" placeholder="Edad" required>
+            <button type="submit">Añadir Registro</button>
+        </form>
+
+        <!-- Tabla para mostrar los datos -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Edad</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody id="data-table-body">
+                <!-- Los datos de Firebase se mostrarán aquí -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="reportes.js"></script>
+</body>
+
+</html>
