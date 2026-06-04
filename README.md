@@ -34,3 +34,13 @@ El transporte público del Distrito Nacional carece de una fuente de informació
 ---
 
 ## 🗂 Estructura del proyecto
+assets/           → Imágenes, íconos y recursos estáticos
+views/            → Vistas y páginas de la plataforma
+vendor/           → Librerías de terceros
+documentation/    → Documentación del proyecto
+
+---
+
+## 👥 Equipo
+
+Proyecto desarrollado en equipo como parte de la materia **Proyecto Integrador** de la carrera **Ingeniería en Tecnologías Computacionales** — UNIBE.
